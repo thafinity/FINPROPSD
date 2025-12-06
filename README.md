@@ -124,7 +124,7 @@ To run this project on your local machine, follow these steps:
 ### Installation & Run
 1.  **Clone the Repo:**
     ```bash
-    git clone [https://github.com/your-username/atm-fpga-project.git](https://github.com/your-username/atm-fpga-project.git)
+    git clone https://github.com/thafinity/FINPROPSD.git
     ```
 2.  **Open in Quartus:**
     * Launch Quartus Prime.
@@ -143,10 +143,10 @@ To run this project on your local machine, follow these steps:
 
 This project was engineered by **Group 20** for the Digital System Design Laboratory:
 
-* **Marshal Aufa Diliyana** (2406346913) - *Lead Engineer & Simulation Specialist*
-* **Zahir** (2406487084) - *Logic Designer & Memory Architect*
-* **Thalita Salma Artanti** (2406419354) - *Documentation Lead & Timing Specialist*
-* **Caesar Nur Falah W.** (2406487052) - *Validation Analyst & Microcode Designer*
+* **Marshal Aufa Diliyana** (2406346913)
+* **Zahir** (2406487084)
+* **Thalita Salma Artanti** (2406419354)
+* **Caesar Nur Falah W.** (2406487052)
 
 ---
 
