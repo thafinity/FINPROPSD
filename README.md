@@ -12,14 +12,14 @@
 
 ## 📖 Executive Summary
 
-This project implements a fully functional **Microcoded ATM Controller** on an FPGA architecture[cite: 34]. Moving beyond traditional software-based microcontrollers, this system utilizes a **System-on-Chip (SoC)** approach where the control logic, memory, and arithmetic processing are synthesized directly into hardware gates.
+This project implements a fully functional **Microcoded ATM Controller** on an FPGA architecture. Moving beyond traditional software-based microcontrollers, this system utilizes a **System-on-Chip (SoC)** approach where the control logic, memory, and arithmetic processing are synthesized directly into hardware gates.
 
-The core innovation lies in the use of **Microprogramming (Modul 9)** to replace rigid hardwired State Machines, allowing for a flexible control store that separates the "Decision Logic" (FSM) from the "Control Signals" (Output)[cite: 44, 45].
+The core innovation lies in the use of **Microprogramming (Modul 9)** to replace rigid hardwired State Machines, allowing for a flexible control store that separates the "Decision Logic" (FSM) from the "Control Signals" (Output).
 
 ### 🎯 Key Capabilities
-* **Hardware-Level Security:** PIN authentication is performed via a parallel loop accelerator, eliminating software interrupt latency[cite: 42].
-* **Synchronous Banking Logic:** User balances are stored in Block RAM and processed via custom VHDL arithmetic functions to deduct fees in real-time[cite: 46, 47].
-* **Automated Verification:** The system includes a self-checking testbench that autonomously validates timing constraints and logic correctness[cite: 57].
+* **Hardware-Level Security:** PIN authentication is performed via a parallel loop accelerator, eliminating software interrupt latency.
+* **Synchronous Banking Logic:** User balances are stored in Block RAM and processed via custom VHDL arithmetic functions to deduct fees in real-time.
+* **Automated Verification:** The system includes a self-checking testbench that autonomously validates timing constraints and logic correctness.
 
 ---
 
@@ -64,24 +64,24 @@ Here is how we organized the files so you don't get lost:
 
 ## 🏗️ System Architecture
 
-The system is designed using a **Structural VHDL** approach, integrating five distinct subsystems into a single Top-Level Entity (`atm_top.vhd`)[cite: 48, 77].
+The system is designed using a **Structural VHDL** approach, integrating five distinct subsystems into a single Top-Level Entity (`atm_top.vhd`).
 
 ### 1. The Control Plane (Brain)
 * **FSM Controller (`fsm_controller.vhd`):** Manages the high-level states: `IDLE` → `CHECK_PIN` → `OPERATION` → `DONE/ERROR`.
-* **Microcode ROM (`rom_microcode.vhd`):** Acts as the look-up table for control signals. Instead of complex `IF-ELSE` statements in the FSM, the controller simply points to an address in the ROM to retrieve the correct LED/Display patterns[cite: 92].
+* **Microcode ROM (`rom_microcode.vhd`):** Acts as the look-up table for control signals. Instead of complex `IF-ELSE` statements in the FSM, the controller simply points to an address in the ROM to retrieve the correct LED/Display patterns.
 
 ### 2. The Data Plane (Muscle)
-* **Auth Accelerator (`auth_accelerator.vhd`):** A dedicated hardware block that compares the input PIN against the stored user password using a `FOR LOOP` construct. This ensures validation happens in a single clock cycle window[cite: 80, 81].
-* **Bank RAM (`bank_ram.vhd`):** A synchronous memory unit storing user balances[cite: 86].
+* **Auth Accelerator (`auth_accelerator.vhd`):** A dedicated hardware block that compares the input PIN against the stored user password using a `FOR LOOP` construct. This ensures validation happens in a single clock cycle window.
+* **Bank RAM (`bank_ram.vhd`):** A synchronous memory unit storing user balances.
     * *User 0:* Balance 9
     * *User 1:* Balance 8
-* **Arithmetic Unit (`atm_pkg.vhd`):** A custom package containing the `calc_admin_fee` function. It automatically subtracts a fixed administration fee (1 unit) before the balance is sent to the display[cite: 88, 89].
+* **Arithmetic Unit (`atm_pkg.vhd`):** A custom package containing the `calc_admin_fee` function. It automatically subtracts a fixed administration fee (1 unit) before the balance is sent to the display.
 
 ---
 
 ## 📊 Technical Implementation Details
 
-We integrated **8 Core Laboratory Modules** into this final project[cite: 164]:
+We integrated **8 Core Laboratory Modules** into this final project:
 
 | Feature | Implementation Method | Description |
 | :--- | :--- | :--- |
@@ -102,15 +102,15 @@ We utilized a **Self-Checking Testbench** (`tb_atm_top.vhd`) to verify the desig
 1.  **Security Breach Attempt:**
     * *Input:* Wrong PIN (`1111`).
     * *Expected Result:* Error LED High, State returns to IDLE.
-    * *Status:* **PASSED**[cite: 109, 148].
+    * *Status:* **PASSED**.
 2.  **Valid Transaction (User 0):**
     * *Input:* Correct PIN (`1010`), Initial Balance `9`.
     * *Expected Result:* Success LED High, Display shows `8` (9 - 1 fee).
-    * *Status:* **PASSED**[cite: 110, 152].
+    * *Status:* **PASSED**.
 3.  **Multi-User Handling (User 1):**
     * *Input:* Correct PIN, Initial Balance `8`.
     * *Expected Result:* Display shows `7` (8 - 1 fee).
-    * *Status:* **PASSED**[cite: 111, 153].
+    * *Status:* **PASSED**.
 
 ---
 
@@ -119,8 +119,8 @@ We utilized a **Self-Checking Testbench** (`tb_atm_top.vhd`) to verify the desig
 To run this project on your local machine, follow these steps:
 
 ### Prerequisites
-* **Intel Quartus Prime (Lite/Standard)** - For Synthesis & Bitstream Generation[cite: 71].
-* **ModelSim - Intel FPGA Edition** - For RTL Simulation[cite: 72].
+* **Intel Quartus Prime (Lite/Standard)** - For Synthesis & Bitstream Generation.
+* **ModelSim - Intel FPGA Edition** - For RTL Simulation.
 
 ### Installation & Run
 1.  **Clone the Repo:**
@@ -142,7 +142,7 @@ To run this project on your local machine, follow these steps:
 
 ## 👥 The Team (Group 20)
 
-This project was engineered by **Group 20** for the Digital System Design Laboratory[cite: 5, 21]:
+This project was engineered by **Group 20** for the Digital System Design Laboratory:
 
 * **Marshal Aufa Diliyana** (2406346913) - *Lead Engineer & Simulation Specialist*
 * **Zahir** (2406487084) - *Logic Designer & Memory Architect*
