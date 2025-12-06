@@ -29,7 +29,6 @@ Here is how we organized the files so you don't get lost:
 ```text
 📁 ATM_Final_Project_PSD
 │
-├── 📄 .gitignore             <-- (Keeps the repo clean from Quartus junk)
 ├── 📄 README.md              <-- (You are reading this right now)
 │
 ├── 📁 src                    <-- (CORE VHDL SOURCE CODE)
